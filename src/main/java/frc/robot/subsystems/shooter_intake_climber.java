@@ -5,6 +5,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.motorsids;
+
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
@@ -16,11 +18,11 @@ public class shooter_intake_climber extends SubsystemBase {
   // Creates a new shooter_intake_climber  whit my motors
 
   //inatke-shooter motors
-  private final SparkMax intake = new SparkMax(5, MotorType.kBrushless); //poner el id correcto
-  private final SparkMax shooter = new SparkMax(6, MotorType.kBrushless); //poner el id correcto
+  private final SparkMax intake = new SparkMax(motorsids.inatke, MotorType.kBrushless); //poner el id correcto
+  private final SparkMax shooter = new SparkMax(motorsids.outake, MotorType.kBrushless); //poner el id correcto
 
   //climber motors
-  private final SparkMax climber = new SparkMax(7, MotorType.kBrushless); //poner el id correcto
+  private final SparkMax climber = new SparkMax(motorsids.climber, MotorType.kBrushless); //poner el id correcto
 
   public shooter_intake_climber() {
     // 2. CONFIGURACIÓN DE MOTORES (ajustar según sea necesario)

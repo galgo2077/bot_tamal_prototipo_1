@@ -9,6 +9,13 @@
       "name": "Main",
       "request": "launch",
       "mainClass": "frc.robot.Main",
+      "projectName": "bot_tamal_prototipo_1"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "frc.robot.Main",
       "projectName": "frc 2026 test_1"
     },
     {

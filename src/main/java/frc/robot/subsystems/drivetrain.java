@@ -7,6 +7,8 @@ package frc.robot.subsystems;
 import edu.wpi.first.math.MathUtil;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.motorsids;
+
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
@@ -18,12 +20,12 @@ public class drivetrain extends SubsystemBase {
   // Creates a new drivetrain  whit my motors
 
   //left motors
-  private final SparkMax leftFrontMotor = new SparkMax(1, MotorType.kBrushed); //poner el id correcto
-  private final SparkMax leftRearMotor = new SparkMax(2, MotorType.kBrushed); //poner el id correcto
+  private final SparkMax leftFrontMotor = new SparkMax(motorsids.frontleft, MotorType.kBrushed); //poner el id correcto
+  private final SparkMax leftRearMotor = new SparkMax(motorsids.backleft, MotorType.kBrushed); //poner el id correcto
 
   //right motors
-  private final SparkMax rightFrontMotor = new SparkMax(3, MotorType.kBrushed); //poner el id correcto
-  private final SparkMax rightRearMotor = new SparkMax(4,  MotorType.kBrushed); //poner el id correcto
+  private final SparkMax rightFrontMotor = new SparkMax(motorsids.frontright, MotorType.kBrushed); //poner el id correcto
+  private final SparkMax rightRearMotor = new SparkMax(motorsids.backright,  MotorType.kBrushed); //poner el id correcto
 
   public drivetrain() {
     // 2. CONFIGURACIÓN DE MOTORES (ajustar según sea necesario)
