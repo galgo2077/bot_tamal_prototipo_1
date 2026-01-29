@@ -15,17 +15,17 @@ package frc.robot;
 public final class Constants {
   public static class motorsids {
 
-    public static final int frontright = 1;
-    public static final int backright = 3;
+    public static final int frontright = 22;
+    public static final int backright = 1;
 
     public static final int frontleft = 2;
-    public static final int backleft = 4;
+    public static final int backleft = 10;
 
-    public static final int inatke = 6;
-    public static final int outake = 9;
-    public static final int climber = 10;
+    public static final int inatke = 20;
+    public static final int outake = 21;
+    //public static final int climber = 11;
 
-
+    
 
   }
 }

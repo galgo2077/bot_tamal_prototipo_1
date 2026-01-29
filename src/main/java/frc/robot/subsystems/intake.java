@@ -14,38 +14,26 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 
 
-public class shooter_intake_climber extends SubsystemBase {
+public class intake extends SubsystemBase {
   // Creates a new shooter_intake_climber  whit my motors
 
   //inatke-shooter motors
   private final SparkMax intake = new SparkMax(motorsids.inatke, MotorType.kBrushless); //poner el id correcto
-  private final SparkMax shooter = new SparkMax(motorsids.outake, MotorType.kBrushless); //poner el id correcto
-
   //climber motors
-  private final SparkMax climber = new SparkMax(motorsids.climber, MotorType.kBrushless); //poner el id correcto
+  //private final SparkMax climber = new SparkMax(motorsids.climber, MotorType.kBrushless); //poner el id correcto
 
-  public shooter_intake_climber() {
+  public intake() {
     // 2. CONFIGURACIÓN DE MOTORES (ajustar según sea necesario)
   }
 
-  public void mecanism_logic(boolean intakeon, boolean outake, boolean climberon, boolean climberoff) {
+  public void mecanism_logic_intake(boolean intakeon) {
     // Configura la velocidad de los motores para el control tipo tanque
 
-    intake.set(intakeon ? 1.0 : 0.0);
-    shooter.set(outake ? 1.0 : 0.0);
+    intake.set(intakeon ? 1 : 0.0);
 
-    // escalador son if porque son dos botones diferentes uno para arriba y el otro para abajo
-
-    if (climberon) {
-        climber.set(1.0);
-    } else if (climberoff) {
-        climber.set(-1.0);
-    } else {
-        climber.set(0.0);
-    }
   }
 
   public void stop() {// detiene el robot
-    mecanism_logic(false, false, false, false);
+    mecanism_logic_intake(false);
   }
 }

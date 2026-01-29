@@ -29,12 +29,15 @@ public class drivetrain extends SubsystemBase {
 
   public drivetrain() {
     // 2. CONFIGURACIÓN DE MOTORES (ajustar según sea necesario)
+    
   }
 
  public void driveTank(double speed, double turn ) {
     // Configura la velocidad de los motores para el control tipo tanque
 
-    speed = Math.abs(speed) < 0.05 ? 0 : speed;//deadzone
+    //speed = Math.abs(speed) < 0.05 ? 0 : speed;//deadzone
+    speed = Math.abs(speed) < Math.abs(0.15) ? 0 : speed;
+    turn = Math.abs(turn) < Math.abs(0.15) ? 0 : turn;
 
     double leftSpeed = MathUtil.clamp(speed + turn, -1.0, 1);//clamp limita el valor a 1, y -1
     double rightSpeed = MathUtil.clamp(speed - turn, -1.0, 1);//clamp limita el valor a 1 y -1

@@ -52,12 +52,14 @@ public class Drive_tank_command extends Command {
 
   //cuando se acaba el comando
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+      m_driveSubsystem.stop();  // Detiene los motores cuando el comando termine
+  }
+  
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    m_driveSubsystem.stop();
-    return false;
+      return false;  // El comando nunca termina por sí solo
   }
 }
