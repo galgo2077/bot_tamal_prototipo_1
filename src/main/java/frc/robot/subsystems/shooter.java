@@ -26,15 +26,20 @@ public class shooter extends SubsystemBase {
     // 2. CONFIGURACIÓN DE MOTORES (ajustar según sea necesario)
   }
 
-  public void mecanism_logic_shooter( boolean outake, Boolean outake2) {
-    // Configura la velocidad de los motores para el control tipo tanque
-
-    shooter.set(outake ? -0.67 : 0.0);
-    shooter.set(outake2 ? 1 : 0.0);
+    public void mecanism_logic_shooter_positive(Boolean outake) {
+ 
+        shooter.set(outake ? 1 : 0.0);
 
     }
 
+    public void mecanism_logic_shooter_negative(Boolean outake2) {
+
+        shooter.set(outake2 ? -0.67 : 0.0);
+    
+        }
+
   public void stop() {// detiene el robot
-    mecanism_logic_shooter(false, false);
+    mecanism_logic_shooter_positive(false);
+    mecanism_logic_shooter_negative(false);
   }
 }

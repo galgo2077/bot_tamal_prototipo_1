@@ -8,6 +8,8 @@ package frc.robot;
 import frc.robot.commands.intake_command;
 import frc.robot.commands.shooter_command;
 import frc.robot.commands.Drive_tank_command;
+import frc.robot.commands.disparar_command;
+import frc.robot.commands.meter_command;
 
 import frc.robot.subsystems.drivetrain;
 import frc.robot.subsystems.shooter;
@@ -23,6 +25,9 @@ public class RobotContainer {
   private final drivetrain driveTank = new drivetrain();
   private final shooter shooter = new shooter();
   private final intake intake = new intake();
+  
+
+  
 
   //controls
   private final CommandXboxController driverController = new CommandXboxController(0);
@@ -50,12 +55,8 @@ public class RobotContainer {
     driverController.a().whileTrue(new intake_command(intake, () -> true));
     driverController.b().whileTrue(new shooter_command(shooter, () -> true, () -> false));
 
-    driverController.leftBumper().whileTrue(new shooter_command(shooter, () -> true, () -> false));
-    driverController.leftBumper().whileTrue(new intake_command(intake, () -> true));
-
-    driverController.rightBumper().whileTrue(new shooter_command(shooter, () -> false, () -> true));
-    driverController.rightBumper().whileTrue(new intake_command(intake, () -> true));
-
+    driverController.rightBumper().whileTrue(new disparar_command(intake, shooter, () -> true, () -> true));
+    driverController.leftBumper().whileTrue(new meter_command(intake, shooter, () -> true, () -> true));
 
   }
 

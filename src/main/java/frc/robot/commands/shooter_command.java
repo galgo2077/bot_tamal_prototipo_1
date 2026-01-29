@@ -23,7 +23,7 @@ public class shooter_command extends Command {
     public void execute() {
         // Usamos el nombre del método que definiste en tu subsistema
         m_subsystem.mecanism_logic_shooter(m_buttonPressed.getAsBoolean(),
-         m_buttonPressed2.getAsBoolean());
+        m_buttonPressed2.getAsBoolean());
     }
 
     @Override
