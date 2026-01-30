@@ -31,6 +31,7 @@ public class RobotContainer {
 
   //controls
   private final CommandXboxController driverController = new CommandXboxController(0);
+  private final CommandXboxController driverController2 = new CommandXboxController(1);
 
   // call bindings
   public RobotContainer() {
@@ -55,7 +56,8 @@ public class RobotContainer {
     driverController.a().whileTrue(new intake_command(intake, () -> true));
     driverController.b().whileTrue(new shooter_command(shooter, () -> true, () -> false));
 
-    driverController.rightBumper().whileTrue(new disparar_command(intake, shooter, () -> true, () -> true));
+    driverController.leftBumper().whileTrue(
+    new disparar_command(intake, shooter, () -> driverController.getRightTriggerAxis(), () -> true));
     driverController.leftBumper().whileTrue(new meter_command(intake, shooter, () -> true, () -> true));
 
   }

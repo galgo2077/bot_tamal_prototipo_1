@@ -7,6 +7,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.cameraserver.CameraServer;
+
 
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
@@ -18,8 +20,17 @@ public class Robot extends TimedRobot {
   private final RobotContainer m_robotContainer;// instancia de robot container
 
 
+  @Override
+  public void robotInit() {
+      } 
+
+           
+
+
   public Robot() {//usado para cuando se inicia el robot
     m_robotContainer = new RobotContainer();
+
+
   }
 
 
@@ -38,12 +49,17 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopInit() {}//cancel autonomous command here if needed
+  public void teleopInit() {
+
+
+    
+  }//cancel autonomous command here if needed
 
   //llamas a tu oi robot container
   @Override
   public void teleopPeriodic() {
     CommandScheduler.getInstance().run();//this is what makes the commands work
+    CameraServer.startAutomaticCapture(0);
 
   }
 }

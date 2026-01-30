@@ -1,8 +1,11 @@
 package frc.robot.commands;
 
 import java.util.function.BooleanSupplier;
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.intake; // Asegúrate de que la clase empiece con Mayúscula en su archivo
+import frc.robot.subsystems.intake;
+ // Asegúrate de que la clase empiece con Mayúscula en su archivo
 import frc.robot.subsystems.shooter;
 
 public class disparar_command extends Command {
@@ -11,13 +14,15 @@ public class disparar_command extends Command {
     private final shooter m_subsystem_shooter;
 
 
-    private final BooleanSupplier m_intakeActive, m_outake;
+    private final BooleanSupplier  m_outake;
+    private final DoubleSupplier m_intakeActive;
 
-    public disparar_command(intake subsystem, shooter subsystem2, BooleanSupplier intakeActive, BooleanSupplier outake) {
+
+    public disparar_command(intake subsystem, shooter subsystem2, DoubleSupplier intakeon_trigger, BooleanSupplier outake) {
 
         this.m_subsystem_Intake = subsystem;
         this.m_subsystem_shooter = subsystem2;
-        this.m_intakeActive = intakeActive;
+        this.m_intakeActive = intakeon_trigger;
         this.m_outake = outake;
 
         // Es vital registrar el subsistema para que dos comandos no lo usen a la vez
@@ -27,7 +32,7 @@ public class disparar_command extends Command {
     @Override
     public void execute() {
         // Le pasamos el valor booleano del botón a la lógica del subsistema
-        m_subsystem_Intake.mecanism_logic_intake(m_intakeActive.getAsBoolean());
+        m_subsystem_Intake.setSpeed(m_intakeActive.getAsDouble());
         m_subsystem_shooter.mecanism_logic_shooter_positive(m_outake.getAsBoolean());
     }
 

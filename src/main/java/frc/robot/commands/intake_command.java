@@ -20,7 +20,7 @@ public class intake_command extends Command {
     @Override
     public void execute() {
         // Le pasamos el valor booleano del botón a la lógica del subsistema
-        m_subsystem.mecanism_logic_intake(m_intakeActive.getAsBoolean());
+        m_subsystem.setIntakeBoolean(m_intakeActive.getAsBoolean());
     }
 
     @Override

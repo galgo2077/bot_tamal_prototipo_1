@@ -27,7 +27,7 @@ public class meter_command extends Command {
     @Override
     public void execute() {
         // Le pasamos el valor booleano del botón a la lógica del subsistema
-        m_subsystem_Intake.mecanism_logic_intake(m_intakeActive.getAsBoolean());
+        m_subsystem_Intake.setIntakeBoolean(m_intakeActive.getAsBoolean());
         m_subsystem_shooter.mecanism_logic_shooter_negative(m_outake.getAsBoolean());
     }
 
