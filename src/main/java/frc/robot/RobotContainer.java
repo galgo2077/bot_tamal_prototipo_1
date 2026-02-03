@@ -53,12 +53,12 @@ public class RobotContainer {
     //bindings son secuencias de acciones no nescesariamente por defecto
 
   //que cuando presione el boton haga la accion   //que mecnaismo  //que valores***********************************
-    driverController.a().whileTrue(new intake_command(intake, () -> true));
-    driverController.b().whileTrue(new shooter_command(shooter, () -> true, () -> false));
+    driverController2.a().whileTrue(new intake_command(intake, () -> true));
+    driverController2.b().whileTrue(new shooter_command(shooter, () -> true, () -> false));
 
-    driverController.leftBumper().whileTrue(
-    new disparar_command(intake, shooter, () -> driverController.getRightTriggerAxis(), () -> true));
-    driverController.leftBumper().whileTrue(new meter_command(intake, shooter, () -> true, () -> true));
+    driverController2.leftBumper().whileTrue(
+    new disparar_command(intake, shooter, () -> driverController2.getRightTriggerAxis(), () -> true));
+    driverController2.leftBumper().whileTrue(new meter_command(intake, shooter, () -> true, () -> true));
 
   }
 
