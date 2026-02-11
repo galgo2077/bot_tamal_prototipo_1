@@ -5,52 +5,47 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.math.MathUtil;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.motorsids;
 
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
-//aca se pueden hacer de que los subsystemas para hacer mas legible el codigo como el chasis mecanismos y asi
-
-
-
 public class drivetrain extends SubsystemBase {
-  // Creates a new drivetrain  whit my motors
+  // Creates a new drivetrain with my motors
 
   //left motors
-  private final SparkMax leftFrontMotor = new SparkMax(motorsids.frontleft, MotorType.kBrushed); //poner el id correcto
-  private final SparkMax leftRearMotor = new SparkMax(motorsids.backleft, MotorType.kBrushed); //poner el id correcto
+  private final SparkMax leftFrontMotor = new SparkMax(motorsids.frontleft, MotorType.kBrushed);
+  private final SparkMax leftRearMotor = new SparkMax(motorsids.backleft, MotorType.kBrushed);
 
   //right motors
-  private final SparkMax rightFrontMotor = new SparkMax(motorsids.frontright, MotorType.kBrushed); //poner el id correcto
-  private final SparkMax rightRearMotor = new SparkMax(motorsids.backright,  MotorType.kBrushed); //poner el id correcto
+  private final SparkMax rightFrontMotor = new SparkMax(motorsids.frontright, MotorType.kBrushed);
+  private final SparkMax rightRearMotor = new SparkMax(motorsids.backright, MotorType.kBrushed);
 
-  public drivetrain() {
-    // 2. CONFIGURACIÓN DE MOTORES (ajustar según sea necesario)
-    
-  }
+    public drivetrain() {
+        // Invertir el lado derecho
+        rightFrontMotor.setInverted(true);
+        rightRearMotor.setInverted(true);
+    }
 
- public void driveTank(double speed, double turn ) {
-    // Configura la velocidad de los motores para el control tipo tanque
+    public void driveTank(double speed, double turn) {
+        // Deadzone
+        speed = Math.abs(speed) < 0.15 ? 0 : speed;
+        turn = Math.abs(turn) < 0.15 ? 0 : turn;
 
-    //speed = Math.abs(speed) < 0.05 ? 0 : speed;//deadzone
-    speed = Math.abs(speed) < Math.abs(0.15) ? 0 : speed;
-    turn = Math.abs(turn) < Math.abs(0.15) ? 0 : turn;
+        // Calcula velocidades
+        double leftSpeed = MathUtil.clamp(speed + turn, -1.0, 1.0);
+        double rightSpeed = MathUtil.clamp(speed - turn, -1.0, 1.0);
 
-    double leftSpeed = MathUtil.clamp(speed + turn, -1.0, 1);//clamp limita el valor a 1, y -1
-    double rightSpeed = MathUtil.clamp(speed - turn, -1.0, 1);//clamp limita el valor a 1 y -1
+        // Setea TODOS los motores manualmente
+        leftFrontMotor.set(leftSpeed);
+        leftRearMotor.set(leftSpeed);
+        
+        rightFrontMotor.set(rightSpeed);
+        rightRearMotor.set(rightSpeed);
+    }
 
-
-    leftFrontMotor.set(leftSpeed);
-    leftRearMotor.set(leftSpeed);
-
-    rightFrontMotor.set(rightSpeed);
-    rightRearMotor.set(rightSpeed);
-  }
-
-  public void stop() {// detiene el robot
+  public void stop() {
     driveTank(0, 0);
   }
 }

@@ -56,9 +56,9 @@ public class RobotContainer {
     driverController2.a().whileTrue(new intake_command(intake, () -> true));
     driverController2.b().whileTrue(new shooter_command(shooter, () -> true, () -> false));
 
-    driverController2.leftBumper().whileTrue(
+    driverController2.rightTrigger().whileTrue(
     new disparar_command(intake, shooter, () -> driverController2.getRightTriggerAxis(), () -> true));
-    driverController2.leftBumper().whileTrue(new meter_command(intake, shooter, () -> true, () -> true));
+    driverController2.leftTrigger().whileTrue(new meter_command(intake, shooter, () -> true, () -> true));
 
   }
 
