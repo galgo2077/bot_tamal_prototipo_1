@@ -24,8 +24,8 @@ public class drivetrain extends SubsystemBase {
 
     public drivetrain() {
         // Invertir el lado derecho
-        rightFrontMotor.setInverted(true);
-        rightRearMotor.setInverted(true);
+       
+        
     }
 
     public void driveTank(double speed, double turn) {
@@ -41,8 +41,8 @@ public class drivetrain extends SubsystemBase {
         leftFrontMotor.set(leftSpeed);
         leftRearMotor.set(leftSpeed);
         
-        rightFrontMotor.set(rightSpeed);
-        rightRearMotor.set(rightSpeed);
+        rightFrontMotor.set(-rightSpeed);
+        rightRearMotor.set(-rightSpeed);
     }
 
   public void stop() {

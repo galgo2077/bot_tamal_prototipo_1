@@ -41,7 +41,7 @@ public class RobotContainer {
     driveTank.setDefaultCommand(//default command da prioridad a lo que hagas en el comando
       new Drive_tank_command(//run command repite accion no soloi es un push to do
           driveTank,//define que quieres que mueva
-          () -> -driverController.getLeftY(),//funcion lambda para obtener valor del joystick para primera posicion que en este caso es speed
+          () -> driverController.getLeftY(),//funcion lambda para obtener valor del joystick para primera posicion que en este caso es speed
           () -> -driverController.getRightX()//aca es turn lo define el orden que definiste en subsystems y command
       )
     );
